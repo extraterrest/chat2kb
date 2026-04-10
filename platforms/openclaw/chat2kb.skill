@@ -1,0 +1,95 @@
+---
+name: chat2kb
+description: Convert conversation content into a structured knowledge-base Markdown file. Use when the user asks to "save this conversation", "generate KB", "export notes", "save conversation", "转成知识库", "保存对话", "生成知识库", "导出笔记", or any request to summarize/export conversation content as documentation.
+---
+
+# Chat2KB
+
+Convert chat history into a clean, structured Markdown knowledge-base file.
+
+## Workflow
+
+### 1. Identify the topic
+
+Review the conversation and extract the core topic/theme. Generate a short slug (lowercase, hyphens) for the filename.
+
+### 2. Generate conversation_id
+
+If this is the first export for this conversation, generate a unique ID:
+
+```bash
+CONVERSATION_ID="kb_$(date +%Y%m%d_%H%M%S)_$(openssl rand -hex 3)"
+```
+
+Format: `kb_YYYYMMDD_HHMMSS_6randomhex` — e.g. `kb_20260410_143052_a7x9k2m`
+
+If a previous KB exists with a conversation_id, ask the user:
+- **A**: Update the existing KB (overwrite with full content)
+- **B**: Append only new content (incremental)
+- **C**: Create a new KB (new ID)
+
+### 3. Generate the Markdown
+
+Use this structure:
+
+```yaml
+---
+conversation_id: <id>
+created_at: <ISO date>
+updated_at: <ISO date>
+export_type: full
+---
+```
+
+```markdown
+# <Descriptive Title>
+
+**Date**: YYYY-MM-DD
+**Participants**: <list>
+
+## Summary
+1-2 paragraph overview of what this conversation is about.
+
+## Key Points
+
+### <Theme 1>
+- Key insight or decision
+- Details and context
+
+### <Theme 2>
+- ...
+
+## Code Examples
+```language
+// code if applicable
+```
+
+## Action Items
+- [x] Completed item
+- [ ] Pending item
+```
+
+**Rules:**
+- Group content by theme, not chronologically
+- Use concise bullet points, not prose
+- Include code examples if the conversation contains code
+- Track action items with checkboxes
+- No "Full Conversation Log" section — the Key Points replace it
+
+### 4. Save the file
+
+Filename format: `YYYY-MM-DD-<topic-slug>.md`
+
+If `CHAT2KB_FOLDER` env var is set, save there. Otherwise ask the user where to save.
+
+### 5. Confirm success
+
+Tell user:
+- Where the file was saved
+- Filename used
+- **conversation_id** (important for future reference)
+
+Example:
+> ✅ Knowledge base saved!
+> 📁 Location: ~/KnowledgeBase/2026-04-10-react-discussion.md
+> 🆔 ID: kb_20260410_143052_a7x9k2m
