@@ -55,7 +55,7 @@ User may specify (explicitly or implicitly):
 
 For each selected topic with existing KB:
 
-> "Topic '广告投放策略' has a previous KB (ID: kb_20260410_143052_a7x9k2m).
+> "Topic '广告投放策略' has a previous KB (ID: kb_20260410_143052_a7c9e2).
 > How would you like to proceed?
 > - **A**: Update existing KB (overwrite with full content)
 > - **B**: Incremental export (only new content since last export)
@@ -76,7 +76,7 @@ For each confirmed topic:
 
 ```yaml
 ---
-conversation_id: kb_20260410_143052_a7x9k2m
+conversation_id: kb_20260410_143052_a7c9e2
 created_at: 2026-04-10 14:30
 updated_at: 2026-04-10 16:45
 export_type: full | incremental
@@ -124,7 +124,7 @@ export_type: full | incremental
 
 > ✅ Knowledge base saved!
 > 📁 Location: ~/KnowledgeBase/2026-04-10-ad-strategy.md
-> 🆔 ID: kb_20260410_143052_a7x9k2m
+> 🆔 ID: kb_20260410_143052_a7c9e2
 
 ## Configuration
 

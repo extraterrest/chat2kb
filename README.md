@@ -16,25 +16,30 @@ Chat2KB is a cross-platform skill/agent capability that transforms conversationa
 
 ## Quick Start
 
-### QoderWork
+**TL;DR - 2 steps**:
 
 ```bash
-# Install the skill
-# Copy platforms/qoder/ to ~/.qoderwork/skills/chat2kb/
+# 1. Create KB folder
+mkdir -p ~/Documents/KnowledgeBase
 
-# Set your KB folder (optional)
-export CHAT2KB_FOLDER="~/KnowledgeBase"
+# 2. Start using Chat2KB!
+# In your AI assistant: "Save this conversation to KB"
 ```
 
-### OpenClaw
+### Per-Platform Installation
 
-```bash
-# Install the skill
-# Import platforms/openclaw/chat2kb.skill
+**Codex**:
+- Copy `platforms/codex/` or `platforms/codex/SKILL.md` into your Codex skills location
 
-# Set your KB folder (optional)
-export CHAT2KB_FOLDER="~/KnowledgeBase"
-```
+**Claude**:
+- Copy or import `platforms/claude/SKILL.md`
+- Use with enhanced features (multi-topic detection, dry-run, etc.)
+
+**QoderWork**:
+- Copy `platforms/qoder/` to `~/.qoderwork/skills/chat2kb/`
+
+**OpenClaw**:
+- Import `platforms/openclaw/chat2kb.skill`
 
 ## Usage
 
@@ -52,17 +57,23 @@ The skill will:
 
 ## Documentation
 
-- [Design Philosophy](docs/design.md)
-- [Specification](docs/spec.md)
-- [Changelog](docs/changelog.md)
+**Reference**:
+- [Design Philosophy](docs/design.md) - Core principles and architecture
+- [Specification](docs/spec.md) - Technical format and standards
+- [Claude Implementation](platforms/claude/SKILL.md) - How Chat2KB works with Claude
+- [Codex Implementation](platforms/codex/SKILL.md) - How Chat2KB works with Codex
+
+**For Developers**:
+- [Changelog](docs/changelog.md) - Release history
 
 ## Platform Support
 
 | Platform | Status | Location |
 |----------|--------|----------|
-| QoderWork | ✅ Available | `platforms/qoder/` |
+| Codex | ✅ Available | `platforms/codex/` |
 | OpenClaw | ✅ Available | `platforms/openclaw/` |
-| Cursor | 🚧 Planned | `platforms/cursor/` |
+| Claude | ✅ Available | `platforms/claude/` |
+| QoderWork | ✅ Available | `platforms/qoder/` |
 
 ## Contributing
 

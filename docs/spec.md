@@ -4,12 +4,12 @@
 
 ### Pattern
 ```
-kb_{YYYYMMDD}_{HHMMSS}_{6randomhex}
+kb_{YYYYMMDD}_{HHMMSS}_{6hex}
 ```
 
 ### Example
 ```
-kb_20260410_143052_a7x9k2m
+kb_20260410_143052_a7c9e2
 ```
 
 ### Generation
@@ -21,7 +21,7 @@ CONVERSATION_ID="kb_$(date +%Y%m%d_%H%M%S)_$(openssl rand -hex 3)"
 - Always starts with `kb_` prefix
 - Date and time in UTC or local timezone (consistent per platform)
 - Random component: 6 hexadecimal characters (24 bits of entropy)
-- Total length: 26 characters
+- Total length: 25 characters
 
 ## Filename Format
 
@@ -57,18 +57,20 @@ YYYY-MM-DD-<topic-slug>.md
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `tags` | array | User-defined tags |
+| `topics` | array | Tags derived from conversation content |
+| `language` | string | Detected language of the conversation (e.g. `en`, `zh-CN`) |
 | `platform` | string | Platform where conversation occurred |
 | `participants` | array | List of participants |
 
 ### Example
 ```yaml
 ---
-conversation_id: kb_20260410_143052_a7x9k2m
-created_at: 2026-04-10 14:30
-updated_at: 2026-04-10 16:45
+conversation_id: kb_20260410_143052_a7c9e2
+created_at: 2026-04-10T14:30:00Z
+updated_at: 2026-04-10T16:45:00Z
 export_type: full
-tags: ["react", "performance", "optimization"]
+topics: ["react", "performance", "optimization"]
+language: en
 ---
 ```
 
@@ -167,7 +169,6 @@ YYYY-MM-DD-<topic-slug>-part{N}.md
 1. Detect previous exports in conversation
 2. Offer update/incremental/new options
 3. Support environment variable for save location
-4. Include gen_id.sh utility script
 
 ### Optional Enhancements
 1. Auto-detect conversation topic

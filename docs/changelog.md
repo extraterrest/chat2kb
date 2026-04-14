@@ -5,11 +5,28 @@ All notable changes to the Chat2KB project will be documented in this file.
 ## [Unreleased]
 
 ### Planned
-- Cursor platform support
 - Tagging system
 - Template customization
+- Cloud storage adapters (Notion, Obsidian, Google Drive, OneDrive)
+- Multi-topic detection UI improvements
+- Content preview and edit before save
 
-## [1.0.0] - 2026-04-10
+## [0.1.1] - 2026-04-10
+
+### Added
+- Claude platform implementation with enhanced features
+- Improvement suggestions documentation
+- Multi-topic detection with confidence scores
+- Rich YAML frontmatter with metadata (word_count, language, participants, confidence_score, related_ids)
+- Error handling and edge case documentation
+- Configuration file support (~/.chat2kb/config.yml)
+- Dry-run mode for preview without saving
+
+### Changed
+- Enhanced error messages and troubleshooting guide
+- Added content quality metrics and suggestions
+
+## [0.1.0] - 2026-04-10
 
 ### Added
 - Initial release
